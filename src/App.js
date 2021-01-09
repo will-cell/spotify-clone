@@ -4,14 +4,18 @@ import Login from './Login'
 import Player from './Player'
 import { getTokenFromUrl } from './spotify';
 import SpotiyWebApi from 'spotify-web-api-js'
+import { useStateValue } from './DataLayer'
+
 
 const spotify = new SpotiyWebApi();
 
 
 function App() {
-
-    const [token, setToken] = useState(null)
     
+    const [token, setToken] = useState(null)
+    const [{ user }, dispatch] = useStateValue(); 
+
+
     useEffect(() => {
         const hash = getTokenFromUrl()
         window.location.hash = ""
@@ -23,14 +27,21 @@ function App() {
             spotify.setAccessToken(_token);
 
             spotify.getMe().then(user => {
-                console.log(user);
+                dispatch({
+                type: 'SET_USER', 
+                user
+            })
             });
+
+            
 
 
         }
 
         console.log('i have a token : ', token);
     }, [])
+
+    console.log(user);
 
     return (
         
