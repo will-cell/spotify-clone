@@ -23,7 +23,7 @@ const reducer = (state, action) => {
         case 'SET_PLAYLISTS': 
             return { 
                 ...state, 
-                playlists: action.playlists
+                playlists: action.play
             }
         default:
             return state;
