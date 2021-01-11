@@ -10,6 +10,8 @@ function SongRow({track}) {
                 <p>
                     {track.artists.map((artist) => artist.name).join(", ")}
                     {track.album.name}
+                    {/* {track.genres.map((genre) => genre).join(", ")}
+                    {track.type} */}
                 </p>
             </div>
         </div>

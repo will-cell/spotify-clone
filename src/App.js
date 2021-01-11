@@ -14,7 +14,7 @@ const axios = require('axios');
 function App() {
 
     
-    const [{ user, token }, dispatch] = useStateValue(); 
+    const [{ user, token, playlists }, dispatch] = useStateValue(); 
 
     
 
@@ -34,10 +34,11 @@ function App() {
                 dispatch({
                 type: 'SET_USER', 
                 user
-            })
+                })
+                console.log('i have a token : ', token);
             });
 
-            spotify.getUserPlaylists().then((playlists) => {
+            spotify.getUserPlaylists().then(playlists => {
                 dispatch({
                     type: 'SET_PLAYLISTS', 
                     playlists: playlists
@@ -53,23 +54,25 @@ function App() {
 
 
 
-            spotify.getArtist('0OdUWJ0sBjDrqHygGUXeCF').then((response) => {
+            spotify.searchArtists('DAMSO').then((response) => {
                 dispatch({
                     type: 'SET_SEARCH_ARTIST',
                     search : response,
                 })
             })
 
+
             
         }
+        
     }, [])
 
-    console.log('i have a token : ', token);
-
     
 
     
-    console.log(user);
+
+    
+    console.log(user, playlists);
 
 
     return (

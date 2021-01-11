@@ -10,7 +10,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
 function Body({ spotify }) {
 
-    const [{ discover_weekly }, dispatch] = useStateValue();
+    const [{ discover_weekly, }, dispatch] = useStateValue();
     
     return (
          <div className="body">
@@ -29,7 +29,6 @@ function Body({ spotify }) {
         <div className="body__icons">
           <PlayCircleFilledIcon
             className="body__shuffle"
-            
           />
           <FavoriteIcon fontSize="large" />
           <MoreHorizIcon />
