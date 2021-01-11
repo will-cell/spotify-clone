@@ -8,19 +8,21 @@ import { useStateValue } from './DataLayer'
 
 
 const spotify = new SpotiyWebApi();
+const axios = require('axios');
 
 
 function App() {
+
     
     const [{ user, token }, dispatch] = useStateValue(); 
 
+    
 
     useEffect(() => {
         const hash = getTokenFromUrl()
-        window.location.hash = ""
         const _token = hash.access_token
-
         if (_token) {
+
             dispatch({
                 type: 'SET_TOKEN', 
                 token:_token,
@@ -49,11 +51,24 @@ function App() {
                 })
             })
 
-        }
 
-        console.log('i have a token : ', token);
+
+            spotify.getArtist('0OdUWJ0sBjDrqHygGUXeCF').then((response) => {
+                dispatch({
+                    type: 'SET_SEARCH_ARTIST',
+                    search : response,
+                })
+            })
+
+            
+        }
     }, [])
 
+    console.log('i have a token : ', token);
+
+    
+
+    
     console.log(user);
 
 

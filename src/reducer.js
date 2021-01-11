@@ -3,9 +3,10 @@ export const initialState = {
     playlits: [],
     playing: false,
     item: null,
-    // token :null,
-    token: 'BQASJicmxJ1uJ4Q2xyQ2vMiB12Dt_KowPW37Ie8U35l09D3uZIbHEGWJT1hUZJ9_NcCNOeSzkidt011ek1CsR_gTdr83_kRuQRTcgVZ2UeYSmbG7J39GPVc6T3R2G-BJmImuntD2HrIZjjQMbVsgJAXg3f_3_bGZvMZ1Q3rT5EOZu5GwiMvC', 
-    discover_weekly : null
+    token :null,
+    // token: 'BQASJicmxJ1uJ4Q2xyQ2vMiB12Dt_KowPW37Ie8U35l09D3uZIbHEGWJT1hUZJ9_NcCNOeSzkidt011ek1CsR_gTdr83_kRuQRTcgVZ2UeYSmbG7J39GPVc6T3R2G-BJmImuntD2HrIZjjQMbVsgJAXg3f_3_bGZvMZ1Q3rT5EOZu5GwiMvC', 
+    discover_weekly: null,
+    search:null,
 }; 
 
 const reducer = (state, action) => {
@@ -31,6 +32,12 @@ const reducer = (state, action) => {
             return { 
                 ...state, 
                 discover_weekly: action.discover_weekly
+            }
+        
+        case 'SET_SEARCH_ARTIST': 
+            return { 
+                ...state, 
+                search: action.search
             }
         default:
             return state;
