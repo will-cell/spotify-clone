@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Body.css'
 import Header from './Header'
 import SongRow from "./SongRow";
@@ -10,7 +10,9 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
 function Body({ spotify }) {
 
-    const [{ discover_weekly, }, dispatch] = useStateValue();
+    const [{ discover_weekly }, dispatch] = useStateValue();
+
+
     
     return (
          <div className="body">

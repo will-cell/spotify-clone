@@ -54,12 +54,7 @@ function App() {
 
 
 
-            spotify.searchArtists('DAMSO').then((response) => {
-                dispatch({
-                    type: 'SET_SEARCH_ARTIST',
-                    search : response,
-                })
-            })
+            
 
 
             

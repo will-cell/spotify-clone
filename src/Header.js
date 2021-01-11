@@ -1,12 +1,32 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Header.css'
 import SearchIcon from '@material-ui/icons/Search';
 import { Avatar } from '@material-ui/core';
 import { useStateValue } from './DataLayer'
 
-function Header() {
+function Header({spotify}) {
 
-     const [{ user }, dispatch] = useStateValue(); 
+    const [{ user }, dispatch] = useStateValue(); 
+
+    let toSearch = ''
+
+    useEffect(() => {
+
+        spotify.searchArtists('DAMSO').then((response) => {
+                dispatch({
+                    type: 'SET_SEARCH_ARTIST',
+                    search : response,
+                })
+        })
+        
+    }, [])
+    
+    const handleSumbit = (e) => {
+        toSearch = e.target.value
+        console.log(toSearch);
+    }
+
+
 
     return (
         <div className="header">
@@ -14,6 +34,7 @@ function Header() {
                 <SearchIcon />
                 <input
                     placeholder="search artists, songs, podcasts"
+                    onChange = {(e) => handleSumbit(e)}
                     type="text"
                 />
             </div>
