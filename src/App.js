@@ -48,6 +48,7 @@ function App() {
                     discover_weekly: response, 
                 })
             })
+
         }
 
         console.log('i have a token : ', token);
